@@ -135,6 +135,29 @@ nav.scrolled {
   width: 1px; height: 40px; background: rgba(255,255,255,.75);
   animation: scrollPulse 2s ease-in-out infinite;
 }
+
+/* ── FLOATING RSVP BUTTON ── */
+.floating-rsvp {
+  position: fixed; right: 1.5rem; bottom: 1.5rem; z-index: 1200;
+  display: flex; align-items: center; gap: .65rem;
+  padding: .9rem 1.2rem; border-radius: 999px;
+  background: rgba(131, 95, 82, .96); color: #fff;
+  border: 1px solid rgba(255,255,255,.4);
+  box-shadow: 0 8px 28px rgba(48,47,43,.24);
+  text-decoration: none; font-size: .88rem; letter-spacing: 1.5px;
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+  animation: rsvpAttention 2.8s ease-in-out 1.2s 2;
+}
+.floating-rsvp:hover {
+  transform: translateY(-3px); background: #765246;
+  box-shadow: 0 12px 34px rgba(48,47,43,.3);
+}
+.floating-rsvp svg { flex-shrink: 0; }
+@keyframes rsvpAttention {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.06); box-shadow: 0 10px 36px rgba(131,95,82,.42); }
+}
 @keyframes scrollPulse {
   0%, 100% { opacity: 0.3; transform: scaleY(0.6); }
   50% { opacity: 1; transform: scaleY(1); }
@@ -357,6 +380,10 @@ footer {
   .hero-names { font-size: clamp(2rem, 10vw, 3rem); }
   .hero-names-cn { margin-bottom: .7rem; }
   .hero-tagline { font-size: 1.05rem; }
+  .floating-rsvp {
+    right: 1rem; bottom: calc(1rem + env(safe-area-inset-bottom));
+    padding: .9rem 1.15rem; font-size: .9rem;
+  }
 }
 </style>
 </head>
@@ -376,6 +403,13 @@ footer {
     </ul>
   </div>
 </nav>
+
+<a class="floating-rsvp" href="#rsvp" aria-label="前往填寫出席回函">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+    <path d="M4 4h16v16H4z"/><path d="M8 9h8M8 13h5"/><path d="m14 17 2 2 4-4"/>
+  </svg>
+  <span>填寫出席回函</span>
+</a>
 
 <!-- HERO -->
 <section class="hero" id="about">
