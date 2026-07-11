@@ -278,8 +278,7 @@ section { padding: 6rem 1.5rem; }
   color: var(--primary);
 }
 
-.conditional { display: none; }
-.conditional.show { display: block; }
+.conditional { display: block; }
 
 .btn-submit {
   width: 100%; padding: 1rem; border: none; border-radius: 12px;
@@ -470,13 +469,13 @@ footer {
         </div>
         <div class="form-group">
           <label class="form-label">參加人數 GUESTS</label>
-          <input type="number" class="form-input" id="field-guests" min="0" max="20" required placeholder="請輸入人數" oninput="toggleConditional()">
+          <input type="number" class="form-input" id="field-guests" min="1" max="20" required inputmode="numeric" placeholder="請輸入人數（包含本人）">
         </div>
 
         <div class="conditional" id="conditionalFields">
           <div class="form-group">
             <label class="form-label">飲食需求 DIETARY</label>
-            <select class="form-select" id="field-dietary">
+            <select class="form-select" id="field-dietary" required>
               <option value="" disabled selected>請選擇飲食習慣</option>
               <option value="葷食">葷食</option>
               <option value="素食">素食</option>
@@ -484,7 +483,7 @@ footer {
           </div>
           <div class="form-group">
             <label class="form-label">兒童椅數量 BABY CHAIR</label>
-            <input type="number" class="form-input" id="field-babychair" min="0" max="20" value="0" inputmode="numeric" placeholder="無需求請填 0">
+            <input type="number" class="form-input" id="field-babychair" min="0" max="20" value="0" required inputmode="numeric" placeholder="無需求請填 0">
           </div>
         </div>
 
@@ -553,15 +552,6 @@ function toggleAccordion(btn) {
   panel.style.maxHeight = panel.style.maxHeight ? null : panel.scrollHeight + 'px';
 }
 
-// Conditional fields
-function toggleConditional() {
-  const val = parseInt(document.getElementById('field-guests').value) || 0;
-  const show = val > 0;
-  document.getElementById('conditionalFields').classList.toggle('show', show);
-  document.getElementById('field-dietary').required = show;
-  document.getElementById('field-babychair').required = show;
-}
-
 // Submit RSVP
 function submitRSVP(e) {
   e.preventDefault();
@@ -596,7 +586,6 @@ function resetForm() {
   document.getElementById('rsvpForm').reset();
   document.getElementById('rsvpForm').classList.remove('hide');
   document.getElementById('rsvpSuccess').classList.remove('show');
-  document.getElementById('conditionalFields').classList.remove('show');
 }
 
 // Fade-in observer
