@@ -10,14 +10,14 @@
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --primary: #d4a373;
-  --primary-light: #e8cdb5;
-  --accent: #8da399;
-  --accent-light: #b5ccc2;
-  --bg: #faf6f1;
-  --bg-warm: #f5efe8;
-  --text: #3a3632;
-  --text-light: #6b6560;
+  --primary: #a97767;
+  --primary-light: #dfc8bd;
+  --accent: #647765;
+  --accent-light: #bdc9bd;
+  --bg: #fbf9f5;
+  --bg-warm: #f2eee7;
+  --text: #302f2b;
+  --text-light: #69665f;
   --white: #ffffff;
   --card-shadow: 0 8px 32px rgba(58, 54, 50, 0.08);
   --card-shadow-hover: 0 12px 48px rgba(58, 54, 50, 0.12);
@@ -35,7 +35,7 @@ body {
 /* ── NAV (frosted glass) ── */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-  background: rgba(250, 246, 241, 0.72);
+  background: rgba(251, 249, 245, 0.76);
   backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
   border-bottom: 1px solid rgba(212, 163, 115, 0.15);
   transition: background 0.4s, box-shadow 0.4s;
@@ -83,39 +83,43 @@ nav.scrolled {
 
 /* ── HERO ── */
 .hero {
-  position: relative; min-height: 100vh; display: flex; flex-direction: column;
+  position: relative; min-height: 100svh; display: flex; flex-direction: column;
   align-items: center; justify-content: center; text-align: center;
-  background: linear-gradient(160deg, #e8cdb5 0%, #f5efe8 40%, #b5ccc2 100%);
+  background: url('assets/wedding-portrait.jpg') center 43% / cover no-repeat;
   overflow: hidden;
 }
 .hero::before {
   content: ''; position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 30% 20%, rgba(212,163,115,0.25) 0%, transparent 60%),
-              radial-gradient(ellipse at 70% 80%, rgba(141,163,153,0.2) 0%, transparent 60%);
+  background: linear-gradient(180deg, rgba(20,31,20,.28) 0%, rgba(18,25,18,.08) 46%, rgba(22,24,19,.52) 100%);
 }
-.hero-content { position: relative; z-index: 2; padding: 2rem; }
+.hero-content {
+  position: relative; z-index: 2; padding: 2.5rem 3rem; margin-top: 8vh;
+  color: #fff; border: 1px solid rgba(255,255,255,.45);
+  background: rgba(26,31,25,.18); backdrop-filter: blur(4px);
+  text-shadow: 0 2px 18px rgba(0,0,0,.35);
+}
 .hero-date {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.1rem; letter-spacing: 6px; color: var(--text-light);
-  margin-bottom: 1.5rem; font-weight: 400;
+  margin-bottom: 1.5rem; font-weight: 400; color: rgba(255,255,255,.9);
 }
 .hero-names {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(2.8rem, 7vw, 5.5rem); font-weight: 300;
-  letter-spacing: 4px; line-height: 1.2; color: var(--text);
+  letter-spacing: 4px; line-height: 1.2; color: #fff;
   margin-bottom: 0.5rem;
 }
 .hero-names-cn {
-  font-size: 1.1rem; letter-spacing: 8px; color: var(--text-light);
+  font-size: 1.1rem; letter-spacing: 8px; color: rgba(255,255,255,.92);
   font-weight: 300; margin-bottom: 2rem;
 }
 .hero-tagline {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.25rem; font-style: italic; color: var(--text-light);
+  font-size: 1.25rem; font-style: italic; color: rgba(255,255,255,.94);
   font-weight: 300; letter-spacing: 1px;
 }
 .hero-tagline-cn {
-  font-size: 0.92rem; color: var(--text-light); margin-top: 0.5rem;
+  font-size: 0.92rem; color: rgba(255,255,255,.88); margin-top: 0.5rem;
   font-weight: 300; letter-spacing: 3px;
 }
 
@@ -124,9 +128,9 @@ nav.scrolled {
   display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
   z-index: 2;
 }
-.scroll-hint span { font-size: 0.7rem; letter-spacing: 3px; color: var(--text-light); }
+.scroll-hint span { font-size: 0.7rem; letter-spacing: 3px; color: rgba(255,255,255,.8); }
 .scroll-line {
-  width: 1px; height: 40px; background: var(--primary-light);
+  width: 1px; height: 40px; background: rgba(255,255,255,.75);
   animation: scrollPulse 2s ease-in-out infinite;
 }
 @keyframes scrollPulse {
@@ -135,7 +139,7 @@ nav.scrolled {
 }
 
 /* ── SECTIONS ── */
-section { padding: 5rem 1.5rem; }
+section { padding: 6rem 1.5rem; }
 .section-inner { max-width: 860px; margin: 0 auto; }
 .section-title {
   font-family: 'Cormorant Garamond', serif;
@@ -181,8 +185,9 @@ section { padding: 5rem 1.5rem; }
 /* ── DETAILS ── */
 #details { background: var(--bg); }
 .detail-card {
-  background: var(--white); border-radius: 20px;
-  box-shadow: var(--card-shadow); padding: 2.5rem 2rem;
+  background: rgba(255,255,255,.82); border-radius: 2px;
+  border: 1px solid rgba(169,119,103,.18);
+  box-shadow: var(--card-shadow); padding: 3rem 2.5rem;
   margin-bottom: 2rem; transition: box-shadow 0.3s;
 }
 .detail-card:hover { box-shadow: var(--card-shadow-hover); }
@@ -223,32 +228,11 @@ section { padding: 5rem 1.5rem; }
   color: var(--text-light); line-height: 2;
 }
 
-/* ── DRESS CODE ── */
-#dresscode { background: var(--bg-warm); }
-.dress-colors {
-  display: flex; justify-content: center; gap: 2rem;
-  flex-wrap: wrap; margin-bottom: 2rem;
-}
-.dress-swatch { text-align: center; }
-.swatch-circle {
-  width: 80px; height: 80px; border-radius: 50%;
-  margin: 0 auto 0.8rem; box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-  border: 3px solid var(--white);
-}
-.swatch-name { font-size: 0.85rem; color: var(--text); margin-bottom: 0.15rem; }
-.swatch-en {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.78rem; color: var(--text-light); font-style: italic;
-}
-.dress-note {
-  text-align: center; font-size: 0.88rem; color: var(--text-light);
-  letter-spacing: 1px;
-}
-
 /* ── RSVP ── */
-#rsvp { background: var(--bg); }
+#rsvp { background: linear-gradient(180deg, var(--bg-warm), var(--bg)); }
 .rsvp-card {
-  background: var(--white); border-radius: 20px;
+  background: rgba(255,255,255,.9); border-radius: 2px;
+  border: 1px solid rgba(169,119,103,.18);
   box-shadow: var(--card-shadow); padding: 3rem 2.5rem;
   max-width: 580px; margin: 0 auto;
   position: relative; overflow: hidden;
@@ -299,7 +283,7 @@ section { padding: 5rem 1.5rem; }
 
 .btn-submit {
   width: 100%; padding: 1rem; border: none; border-radius: 12px;
-  background: linear-gradient(135deg, var(--primary), #c4935f);
+  background: linear-gradient(135deg, var(--primary), #835f52);
   color: var(--white); font-family: 'Noto Serif TC', serif;
   font-size: 0.95rem; letter-spacing: 3px; cursor: pointer;
   transition: transform 0.2s, box-shadow 0.3s;
@@ -360,9 +344,10 @@ footer {
   .rsvp-card { padding: 2rem 1.5rem; }
   .cd-card { min-width: 72px; padding: 1.2rem 0.8rem; }
   .cd-num { font-size: 2.2rem; }
-  .swatch-circle { width: 64px; height: 64px; }
-  .dress-colors { gap: 1.2rem; }
   .hero-names { letter-spacing: 2px; }
+  .hero { background-position: 49% center; min-height: 100svh; }
+  .hero-content { margin-top: 22vh; padding: 1.8rem 1.2rem; width: calc(100% - 2rem); }
+  .hero-tagline { font-size: 1.05rem; }
 }
 </style>
 </head>
@@ -378,7 +363,6 @@ footer {
     <ul class="nav-links" id="navLinks">
       <li><a href="#about" data-nav>關於我們 ABOUT</a></li>
       <li><a href="#details" data-nav>婚禮詳情 DETAILS</a></li>
-      <li><a href="#dresscode" data-nav>著裝建議 DRESS CODE</a></li>
       <li><a href="#rsvp" data-nav>出席回函 RSVP</a></li>
     </ul>
   </div>
@@ -425,14 +409,14 @@ footer {
 
     <div class="detail-card fade-up">
       <div class="detail-card-label">THE WEDDING BANQUET</div>
-      <div class="detail-card-title">【 晚宴資訊 】</div>
+      <div class="detail-card-title">【 午宴資訊 】</div>
       <div class="detail-row">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
         <span>2026 年 11 月 15 日（日）</span>
       </div>
       <div class="detail-row">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        <span>17:30 入席｜18:00 準時開席</span>
+        <span>11:30 入席｜12:00 準時開席</span>
       </div>
       <div class="detail-row">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -453,32 +437,6 @@ footer {
         </div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- DRESS CODE -->
-<section id="dresscode">
-  <div class="section-inner">
-    <h2 class="section-title fade-up">Dress Code</h2>
-    <p class="section-subtitle fade-up">服裝色彩建議</p>
-    <div class="dress-colors fade-up">
-      <div class="dress-swatch">
-        <div class="swatch-circle" style="background: #8faabe;"></div>
-        <div class="swatch-name">霧藍</div>
-        <div class="swatch-en">Dusty Blue</div>
-      </div>
-      <div class="dress-swatch">
-        <div class="swatch-circle" style="background: #d9c9b6;"></div>
-        <div class="swatch-name">燕麥奶茶</div>
-        <div class="swatch-en">Oatmeal</div>
-      </div>
-      <div class="dress-swatch">
-        <div class="swatch-circle" style="background: #b86f50;"></div>
-        <div class="swatch-name">焦糖磚紅</div>
-        <div class="swatch-en">Caramel</div>
-      </div>
-    </div>
-    <p class="dress-note fade-up">邀請您穿著以上色系與我們共襄盛舉</p>
   </div>
 </section>
 
@@ -585,7 +543,7 @@ document.querySelectorAll('[data-nav]').forEach(a => {
 });
 
 // Countdown
-const weddingDate = new Date('2026-11-15T18:00:00+08:00').getTime();
+const weddingDate = new Date('2026-11-15T12:00:00+08:00').getTime();
 function updateCountdown() {
   const diff = weddingDate - Date.now();
   if (diff <= 0) { ['cd-days','cd-hrs','cd-min','cd-sec'].forEach(id => document.getElementById(id).textContent = '00'); return; }
