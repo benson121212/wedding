@@ -93,25 +93,27 @@ nav.scrolled {
   background: linear-gradient(180deg, rgba(20,31,20,.28) 0%, rgba(18,25,18,.08) 46%, rgba(22,24,19,.52) 100%);
 }
 .hero-content {
-  position: relative; z-index: 2; padding: 2.5rem 3rem; margin-top: 8vh;
-  color: #fff; border: 1px solid rgba(255,255,255,.45);
-  background: rgba(26,31,25,.18); backdrop-filter: blur(4px);
+  position: absolute; z-index: 2; left: 5vw; bottom: 7vh;
+  width: min(620px, 44vw); padding: 2rem 2.4rem; text-align: left;
+  color: #fff; border-left: 1px solid rgba(255,255,255,.65);
+  background: linear-gradient(90deg, rgba(20,27,20,.52), rgba(20,27,20,.08));
+  backdrop-filter: blur(2px);
   text-shadow: 0 2px 18px rgba(0,0,0,.35);
 }
 .hero-date {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.1rem; letter-spacing: 6px; color: var(--text-light);
-  margin-bottom: 1.5rem; font-weight: 400; color: rgba(255,255,255,.9);
+  margin-bottom: 1rem; font-weight: 400; color: rgba(255,255,255,.9);
 }
 .hero-names {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2.8rem, 7vw, 5.5rem); font-weight: 300;
+  font-size: clamp(2.4rem, 4.2vw, 4.2rem); font-weight: 300;
   letter-spacing: 4px; line-height: 1.2; color: #fff;
   margin-bottom: 0.5rem;
 }
 .hero-names-cn {
   font-size: 1.1rem; letter-spacing: 8px; color: rgba(255,255,255,.92);
-  font-weight: 300; margin-bottom: 2rem;
+  font-weight: 300; margin-bottom: 1.2rem;
 }
 .hero-tagline {
   font-family: 'Cormorant Garamond', serif;
@@ -344,8 +346,16 @@ footer {
   .cd-card { min-width: 72px; padding: 1.2rem 0.8rem; }
   .cd-num { font-size: 2.2rem; }
   .hero-names { letter-spacing: 2px; }
-  .hero { background-position: 49% center; min-height: 100svh; }
-  .hero-content { margin-top: 22vh; padding: 1.8rem 1.2rem; width: calc(100% - 2rem); }
+  .hero { background-position: 51% center; min-height: 100svh; }
+  .hero-content {
+    left: 1rem; right: 1rem; bottom: 5.5rem; width: auto;
+    padding: 1.25rem 1.1rem; text-align: center;
+    border-left: none; border-top: 1px solid rgba(255,255,255,.55);
+    background: linear-gradient(180deg, rgba(20,27,20,.08), rgba(20,27,20,.48));
+  }
+  .hero-date { margin-bottom: .55rem; }
+  .hero-names { font-size: clamp(2rem, 10vw, 3rem); }
+  .hero-names-cn { margin-bottom: .7rem; }
   .hero-tagline { font-size: 1.05rem; }
 }
 </style>
