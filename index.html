@@ -266,6 +266,14 @@ section { padding: 6rem 1.5rem; }
   content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
   background: linear-gradient(90deg, var(--primary), var(--accent));
 }
+.rsvp-notice {
+  display: flex; align-items: flex-start; gap: .75rem;
+  margin-bottom: 2rem; padding: 1rem 1.1rem;
+  border: 1px solid rgba(169,119,103,.2); border-radius: 10px;
+  background: rgba(242,238,231,.72); color: var(--text-light);
+  font-size: .84rem; line-height: 1.8;
+}
+.rsvp-notice svg { flex-shrink: 0; margin-top: 4px; color: var(--primary); }
 .form-group { margin-bottom: 1.5rem; }
 .form-label {
   display: block; font-size: 0.82rem; letter-spacing: 2px;
@@ -490,7 +498,26 @@ footer {
     <p class="section-subtitle fade-up">Awaiting Your Reply</p>
 
     <div class="rsvp-card fade-up">
+      <div class="rsvp-notice">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <circle cx="12" cy="12" r="9"/><path d="M12 10v6M12 7h.01"/>
+        </svg>
+        <span>飯店備有停車位，惟車位有限，建議提早抵達或搭乘大眾交通工具。</span>
+      </div>
       <form class="rsvp-form" id="rsvpForm" onsubmit="return submitRSVP(event)">
+        <div class="form-group">
+          <label class="form-label">出席意願 WILL YOU BE JOINING US?</label>
+          <div class="radio-group">
+            <div class="radio-option">
+              <input type="radio" name="attendance" id="attendance-yes" value="欣然出席" required>
+              <label for="attendance-yes">欣然出席</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" name="attendance" id="attendance-no" value="不克出席" required>
+              <label for="attendance-no">不克出席</label>
+            </div>
+          </div>
+        </div>
         <div class="form-group">
           <label class="form-label">姓名 NAME</label>
           <input type="text" class="form-input" id="field-name" required>
@@ -601,6 +628,7 @@ function submitRSVP(e) {
   e.preventDefault();
   const formURL = 'https://docs.google.com/forms/d/e/1FAIpQLSdZyTDv5fzWJXBHAZA_3LNBTyYzjoteymTqTZvTc5K9rjyljQ/formResponse';
   const params = {
+    'entry.476589962': (document.querySelector('input[name="attendance"]:checked') || {}).value || '',
     'entry.642686610': document.getElementById('field-name').value,
     'entry.1941456970': document.getElementById('field-email').value,
     'entry.607367128': document.getElementById('field-relation').value,
