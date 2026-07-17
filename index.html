@@ -232,25 +232,16 @@ section { padding: 6rem 1.5rem; }
 .detail-row svg { flex-shrink: 0; margin-top: 4px; }
 .no-wrap { white-space: nowrap; }
 
-.accordion { margin-top: 1rem; }
-.accordion-btn {
-  background: none; border: 1px solid var(--primary-light);
-  border-radius: 10px; padding: 0.7rem 1.2rem; width: 100%;
-  display: flex; align-items: center; justify-content: space-between;
-  cursor: pointer; font-family: 'Noto Serif TC', serif;
-  font-size: 0.85rem; color: var(--text-light); letter-spacing: 2px;
-  transition: background 0.3s, color 0.3s;
+.transport-block {
+  margin-top: 1.4rem; padding-top: 1.2rem;
+  border-top: 1px solid rgba(169,119,103,.2);
 }
-.accordion-btn:hover { background: rgba(212,163,115,0.06); }
-.accordion-btn .arrow { transition: transform 0.3s; font-size: 0.75rem; }
-.accordion-btn.active .arrow { transform: rotate(180deg); }
-.accordion-panel {
-  max-height: 0; overflow: hidden; transition: max-height 0.4s ease;
-  padding: 0 1.2rem;
+.transport-title {
+  margin-bottom: .65rem; color: var(--accent);
+  font-size: .75rem; font-weight: 500; letter-spacing: 2.5px;
 }
-.accordion-panel-inner {
-  padding: 1rem 0 0.5rem; font-size: 0.88rem;
-  color: var(--text-light); line-height: 2;
+.transport-content {
+  color: var(--text-light); font-size: .88rem; line-height: 2;
 }
 
 /* ── RSVP ── */
@@ -474,17 +465,13 @@ footer {
         <span>地點：<span class="no-wrap">寒舍艾美酒店</span></span>
       </div>
 
-      <div class="accordion">
-        <button class="accordion-btn" onclick="toggleAccordion(this)">
-          交通指引 TRANSPORTATION <span class="arrow">▼</span>
-        </button>
-        <div class="accordion-panel">
-          <div class="accordion-panel-inner">
-            <strong>捷運：</strong><span class="no-wrap">板南線「市政府站」</span>3 號出口，步行約 3 分鐘。<br>
-            <strong>公車：</strong><span class="no-wrap">市政府站</span>（忠孝東路）下車即達。<br>
-            <strong>自行開車：</strong>飯店提供地下停車場，入場可索取停車折抵。<br>
-            <strong>地址：</strong><span class="no-wrap">台北市信義區松仁路38號</span>
-          </div>
+      <div class="transport-block">
+        <div class="transport-title">交通指引 TRANSPORTATION</div>
+        <div class="transport-content">
+          <strong>捷運：</strong><span class="no-wrap">板南線「市政府站」</span>3 號出口，步行約 3 分鐘。<br>
+          <strong>公車：</strong><span class="no-wrap">市政府站</span>（忠孝東路）下車即達。<br>
+          <strong>自行開車：</strong>飯店備有地下停車場，惟車位有限，建議提早抵達。<br>
+          <strong>地址：</strong><span class="no-wrap">台北市信義區松仁路 38 號</span>
         </div>
       </div>
     </div>
@@ -615,13 +602,6 @@ function updateCountdown() {
 }
 updateCountdown();
 setInterval(updateCountdown, 1000);
-
-// Accordion
-function toggleAccordion(btn) {
-  btn.classList.toggle('active');
-  const panel = btn.nextElementSibling;
-  panel.style.maxHeight = panel.style.maxHeight ? null : panel.scrollHeight + 'px';
-}
 
 // Submit RSVP
 function submitRSVP(e) {
