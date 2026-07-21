@@ -9,8 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Noto+Serif+TC:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="preload" as="image" href="assets/hero-desktop.webp" media="(min-width: 761px)">
-  <link rel="preload" as="image" href="assets/hero-mobile.webp" media="(max-width: 760px)">
+  <link rel="preload" as="image" href="assets/story-couple.webp">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -281,6 +280,17 @@
     .details-photo img { height: 100%; object-fit: cover; object-position: 49% center; }
     .details-card { display: flex; flex-direction: column; justify-content: center; padding: clamp(2.5rem, 5vw, 5.2rem); background: var(--paper); }
     .details-card h2 { margin: .65rem 0 2.2rem; font-family: var(--serif); font-size: clamp(2.8rem, 4.7vw, 4.4rem); font-weight: 300; line-height: .95; }
+    .title-annotation {
+      display: block;
+      margin-top: .8rem;
+      color: var(--ink-soft);
+      font-family: var(--tc);
+      font-size: .82rem;
+      font-style: normal;
+      font-weight: 400;
+      letter-spacing: .22em;
+      line-height: 1.5;
+    }
     .detail-line { display: grid; grid-template-columns: 72px 1fr; gap: 1rem; padding: 1.15rem 0; border-top: 1px solid var(--line); }
     .detail-line:last-of-type { border-bottom: 1px solid var(--line); }
     .detail-label { color: var(--gold); font-family: var(--serif); font-size: .75rem; letter-spacing: .18em; text-transform: uppercase; }
@@ -363,10 +373,10 @@
     /* Closing */
     .closing { display: grid; grid-template-columns: 1fr 1fr; min-height: 680px; padding: 0 !important; background: var(--forest); color: #fff; }
     .closing-photo { overflow: hidden; }
-    .closing-photo img { height: 100%; object-fit: cover; object-position: center 54%; }
+    .closing-photo img { height: 100%; object-fit: cover; object-position: center 50%; }
     .closing-copy { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 4rem 2rem; text-align: center; }
     .closing-copy .eyebrow { color: rgba(255,255,255,.62); }
-    .closing-copy h2 { margin: 1.1rem 0; font-family: var(--serif); font-size: clamp(3rem, 6vw, 6rem); font-weight: 300; line-height: .9; }
+    .closing-copy h2 { margin: 1.1rem 0; font-family: var(--serif); font-size: clamp(2.6rem, 5vw, 5.6rem); font-weight: 300; line-height: .9; white-space: nowrap; }
     .closing-copy p { color: rgba(255,255,255,.68); font-size: .82rem; letter-spacing: .12em; }
     .closing-copy small { margin-top: 3rem; color: rgba(255,255,255,.42); font-family: var(--serif); font-size: .72rem; letter-spacing: .18em; }
 
@@ -468,7 +478,9 @@
       .form-row { grid-template-columns: 1fr; gap: 0; }
       .closing { grid-template-columns: 1fr; min-height: 0; }
       .closing-photo { height: 70svh; }
+      .closing-photo img { object-position: 47% center; }
       .closing-copy { min-height: 430px; }
+      .closing-copy h2 { font-size: clamp(2.8rem, 14vw, 4.8rem); }
       .floating-rsvp { right: .85rem; bottom: calc(.85rem + env(safe-area-inset-bottom)); font-size: .78rem; }
     }
 
@@ -512,14 +524,11 @@
   <main id="top">
     <section class="hero" aria-label="婚禮邀請封面">
       <div class="hero-photo">
-        <picture>
-          <source media="(max-width: 760px)" srcset="assets/hero-mobile.webp">
-          <img src="assets/hero-desktop.webp" alt="Hank 與 Gina 的婚紗照" fetchpriority="high">
-        </picture>
+        <img src="assets/story-couple.webp" alt="Hank 與 Gina 的婚紗照" fetchpriority="high">
         <p class="hero-caption">Taipei · November 2026</p>
       </div>
       <div class="hero-copy">
-        <p class="hero-date">2026 年 11 月 15 日</p>
+        <p class="hero-date">NOVEMBER 15, 2026</p>
         <h1 class="hero-names">
           <span>Hank Chiang</span>
           <span class="hero-amp">&</span>
@@ -530,21 +539,21 @@
         <p class="hero-invite">
           謝謝你們一路以來的陪伴。誠摯邀請你們，在這個充滿愛與喜悅的日子裡與我們相聚，一起見證幸福，也共同留下珍貴而美好的回憶。♥
         </p>
-        <a class="hero-cta" href="#details">查看婚宴資訊</a>
+        <a class="hero-cta" href="#details">View the details</a>
       </div>
     </section>
 
     <section class="countdown-section" aria-labelledby="countdown-title">
       <div class="section-inner">
         <div class="countdown-head reveal">
-          <h2 id="countdown-title">距離我們說出<br><em>「我願意」</em></h2>
+          <h2 id="countdown-title">Until we say<br><em>“I do.”</em></h2>
           <p>期待在這一天，與最重要的你們相聚，一起分享我們的喜悅。</p>
         </div>
         <div class="countdown-grid reveal" aria-label="婚禮倒數">
-          <div class="countdown-item"><div class="countdown-number" id="cd-days">00</div><div class="countdown-label">天</div></div>
-          <div class="countdown-item"><div class="countdown-number" id="cd-hours">00</div><div class="countdown-label">時</div></div>
-          <div class="countdown-item"><div class="countdown-number" id="cd-minutes">00</div><div class="countdown-label">分</div></div>
-          <div class="countdown-item"><div class="countdown-number" id="cd-seconds">00</div><div class="countdown-label">秒</div></div>
+          <div class="countdown-item"><div class="countdown-number" id="cd-days">00</div><div class="countdown-label">Days</div></div>
+          <div class="countdown-item"><div class="countdown-number" id="cd-hours">00</div><div class="countdown-label">Hours</div></div>
+          <div class="countdown-item"><div class="countdown-number" id="cd-minutes">00</div><div class="countdown-label">Minutes</div></div>
+          <div class="countdown-item"><div class="countdown-number" id="cd-seconds">00</div><div class="countdown-label">Seconds</div></div>
         </div>
       </div>
     </section>
@@ -552,8 +561,8 @@
     <section class="story" id="story" aria-labelledby="story-title">
       <div class="section-inner">
         <header class="section-heading reveal">
-          <span class="eyebrow">我們的故事</span>
-          <h2 id="story-title">往後，仍是我們。</h2>
+          <span class="eyebrow">Our story in photographs</span>
+          <h2 id="story-title">With love, always.</h2>
           <p>一路走來，謝謝你一直都在。</p>
         </header>
         <div class="story-grid">
@@ -562,7 +571,7 @@
           <div class="story-side-copy reveal">
             <img src="assets/story-closeup.webp" alt="Hank 與 Gina 的婚紗近照" loading="lazy">
             <div class="story-quote">
-              <strong>有你相伴，<br>日常亦是浪漫。</strong>
+              <strong>Better<br>together.</strong>
               <p>從兩個人的日常，走向一輩子的約定。往後每個平凡的日子，也想和你一起度過。</p>
             </div>
           </div>
@@ -575,22 +584,22 @@
         <div class="details-layout reveal">
           <div class="details-photo"><img src="assets/details-bridge.webp" alt="Hank 與 Gina 在吊橋上的婚紗照" loading="lazy"></div>
           <div class="details-card">
-            <span class="eyebrow">誠摯邀請</span>
-            <h2 id="details-title">婚宴資訊</h2>
+            <span class="eyebrow">Save the date</span>
+            <h2 id="details-title">Wedding<br>Details<span class="title-annotation">婚禮資訊</span></h2>
             <div class="detail-line">
-              <span class="detail-label">日期</span>
+              <span class="detail-label">Date</span>
               <div class="detail-value"><strong>2026 年 11 月 15 日（日）</strong></div>
             </div>
             <div class="detail-line">
-              <span class="detail-label">時間</span>
+              <span class="detail-label">Time</span>
               <div class="detail-value">11:30 入席<br>12:00 準時開席</div>
             </div>
             <div class="detail-line">
-              <span class="detail-label">地點</span>
+              <span class="detail-label">Venue</span>
               <div class="detail-value"><strong>寒舍艾美酒店</strong><br>3 樓琥珀廳<br>台北市信義區松仁路 38 號</div>
             </div>
             <div class="transport">
-              <h3>交通指引</h3>
+              <h3>交通指引 TRANSPORTATION</h3>
               <p>
                 <strong>捷運｜</strong>板南線「市政府站」3 號出口，步行約 3 分鐘。<br>
                 <strong>公車｜</strong>「市政府站」（忠孝東路）下車即達。<br>
@@ -605,8 +614,8 @@
     <section class="rsvp-section" id="rsvp" aria-labelledby="rsvp-title">
       <div class="rsvp-wrap">
         <header class="section-heading reveal">
-          <span class="eyebrow">期待您的回覆</span>
-          <h2 id="rsvp-title">是否出席我們的婚宴？</h2>
+          <span class="eyebrow">Kindly reply</span>
+          <h2 id="rsvp-title">Will you join us?<span class="title-annotation">出席意願表單</span></h2>
           <p>期待在婚禮這天與你相見</p>
         </header>
 
@@ -614,7 +623,7 @@
           <div class="rsvp-notice">飯店備有停車位，惟車位有限，建議提早抵達或搭乘大眾交通工具。</div>
           <form class="rsvp-form" id="rsvpForm">
             <div class="form-group">
-              <label class="form-label">出席意願</label>
+              <label class="form-label">出席意願 WILL YOU BE JOINING US?</label>
               <div class="radio-group">
                 <div class="radio-option">
                   <input type="radio" name="attendance" id="attendance-yes" value="欣然出席" required>
@@ -629,18 +638,18 @@
 
             <div class="form-row">
               <div class="form-group">
-                <label class="form-label" for="field-name">姓名</label>
+                <label class="form-label" for="field-name">姓名 NAME</label>
                 <input class="form-input" type="text" id="field-name" autocomplete="name" required>
               </div>
               <div class="form-group">
-                <label class="form-label" for="field-email">電子信箱</label>
+                <label class="form-label" for="field-email">電子信箱 EMAIL</label>
                 <input class="form-input" type="email" id="field-email" autocomplete="email" required>
               </div>
             </div>
 
             <div class="form-row">
               <div class="form-group">
-                <label class="form-label" for="field-relation">與新人的關係</label>
+                <label class="form-label" for="field-relation">與新人的關係 RELATIONSHIP</label>
                 <select class="form-select" id="field-relation" required>
                   <option value="" disabled selected>請選擇</option>
                   <option value="男方家人親戚">男方家人親戚</option>
@@ -652,14 +661,14 @@
                 </select>
               </div>
               <div class="form-group">
-                <label class="form-label" for="field-guests">參加人數</label>
+                <label class="form-label" for="field-guests">參加人數 GUESTS</label>
                 <input class="form-input" type="number" id="field-guests" min="1" max="20" inputmode="numeric" placeholder="包含本人" required>
               </div>
             </div>
 
             <div class="form-row">
               <div class="form-group">
-                <label class="form-label" for="field-dietary">飲食需求</label>
+                <label class="form-label" for="field-dietary">飲食需求 DIETARY</label>
                 <select class="form-select" id="field-dietary" required>
                   <option value="" disabled selected>請選擇</option>
                   <option value="葷食">葷食</option>
@@ -667,35 +676,35 @@
                 </select>
               </div>
               <div class="form-group">
-                <label class="form-label" for="field-babychair">兒童椅數量</label>
+                <label class="form-label" for="field-babychair">兒童椅數量 BABY CHAIR</label>
                 <input class="form-input" type="number" id="field-babychair" min="0" max="20" value="0" inputmode="numeric" required>
               </div>
             </div>
 
             <div class="form-group">
-              <label class="form-label" for="field-blessing">給新人的祝福</label>
+              <label class="form-label" for="field-blessing">給新人的祝福 BLESSING</label>
               <textarea class="form-textarea" id="field-blessing" placeholder="寫下您的祝福…"></textarea>
             </div>
-            <button class="submit-button" type="submit">確認送出</button>
+            <button class="submit-button" type="submit">確認送出 · SUBMIT</button>
           </form>
 
           <div class="rsvp-success" id="rsvpSuccess" role="status" tabindex="-1">
-            <div class="success-mark">謝謝您的回覆</div>
+            <div class="success-mark">Thank you</div>
             <div class="success-title">回函已送出</div>
             <p class="success-text">感謝你的回覆，我們已收到你的祝福。<br>期待與你分享這份喜悅！</p>
-            <button class="reset-button" type="button" id="resetButton">返回喜帖</button>
+            <button class="reset-button" type="button" id="resetButton">BACK TO INVITE</button>
           </div>
         </div>
       </div>
     </section>
 
     <section class="closing" aria-label="婚禮邀請結尾">
-      <div class="closing-photo"><img src="assets/footer-bride.webp" alt="Gina 的婚紗背影" loading="lazy"></div>
+      <div class="closing-photo"><img src="assets/story-garden.webp" alt="Hank 與 Gina 的婚紗照" loading="lazy"></div>
       <div class="closing-copy">
-        <span class="eyebrow">婚禮見</span>
-        <h2>Hank<br><em>& Gina</em></h2>
+        <span class="eyebrow">See you there</span>
+        <h2>Hank <em>&amp; Gina</em></h2>
         <p>2026.11.15 · TAIPEI</p>
-        <small>期待與您相見</small>
+        <small>WITH LOVE, ALWAYS.</small>
       </div>
     </section>
   </main>
