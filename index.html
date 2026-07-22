@@ -318,6 +318,7 @@
     .rsvp-card { padding: clamp(2rem, 6vw, 5rem); background: linear-gradient(145deg, #fffdf9 0%, #fbf6ee 100%); border: 1px solid var(--card-border); box-shadow: var(--card-shadow); }
     .rsvp-notice { margin-bottom: 2.2rem; padding: 1rem 1.2rem; color: var(--ink-soft); background: var(--sand); font-size: .95rem; line-height: 1.85; }
     .form-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+    .attendance-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .form-group { margin-bottom: 1.5rem; }
     .form-label { display: block; margin-bottom: .55rem; color: var(--ink-soft); font-size: .88rem; letter-spacing: .1em; }
     .form-input, .form-select, .form-textarea {
@@ -479,6 +480,8 @@
 
       .rsvp-card { padding: 2rem 1.25rem; }
       .form-row { grid-template-columns: 1fr; gap: 0; }
+      .attendance-row { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .85rem; }
+      .attendance-row .form-label { min-height: 4.2em; font-size: .82rem; line-height: 1.65; letter-spacing: .05em; }
       .closing { grid-template-columns: 1fr; min-height: 0; }
       .closing-photo { height: 70svh; }
       .closing-photo img { object-position: 47% center; }
@@ -650,22 +653,41 @@
               </div>
             </div>
 
-            <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="field-relation">與新人的關係 RELATIONSHIP</label>
+              <select class="form-select" id="field-relation" required>
+                <option value="" disabled selected>請選擇</option>
+                <option value="男方家人親戚">男方家人親戚</option>
+                <option value="男方好友">男方好友</option>
+                <option value="男方同事">男方同事</option>
+                <option value="女方家人親戚">女方家人親戚</option>
+                <option value="女方好友">女方好友</option>
+                <option value="女方同事">女方同事</option>
+              </select>
+            </div>
+
+            <div class="form-row attendance-row">
               <div class="form-group">
-                <label class="form-label" for="field-relation">與新人的關係 RELATIONSHIP</label>
-                <select class="form-select" id="field-relation" required>
+                <label class="form-label" for="field-adults">成人出席人數（含填表人）<br>NUMBER OF ADULTS</label>
+                <select class="form-select" id="field-adults" required>
                   <option value="" disabled selected>請選擇</option>
-                  <option value="男方家人親戚">男方家人親戚</option>
-                  <option value="男方好友">男方好友</option>
-                  <option value="男方同事">男方同事</option>
-                  <option value="女方家人親戚">女方家人親戚</option>
-                  <option value="女方好友">女方好友</option>
-                  <option value="女方同事">女方同事</option>
+                  <option value="1">1 人</option>
+                  <option value="2">2 人</option>
+                  <option value="3">3 人</option>
+                  <option value="4">4 人</option>
+                  <option value="5">5 人</option>
+                  <option value="6">6 人</option>
                 </select>
               </div>
               <div class="form-group">
-                <label class="form-label" for="field-guests">參加人數 GUESTS</label>
-                <input class="form-input" type="number" id="field-guests" min="1" max="20" inputmode="numeric" placeholder="包含本人" required>
+                <label class="form-label" for="field-children">兒童出席人數<br>NUMBER OF CHILDREN</label>
+                <select class="form-select" id="field-children" required>
+                  <option value="0" selected>0 人</option>
+                  <option value="1">1 人</option>
+                  <option value="2">2 人</option>
+                  <option value="3">3 人</option>
+                  <option value="4">4 人</option>
+                </select>
               </div>
             </div>
 
@@ -770,7 +792,8 @@
         'entry.642686610': document.getElementById('field-name').value,
         'entry.1941456970': document.getElementById('field-email').value,
         'entry.607367128': document.getElementById('field-relation').value,
-        'entry.2111541231': document.getElementById('field-guests').value,
+        'entry.2111541231': document.getElementById('field-adults').value,
+        'entry.728279814': document.getElementById('field-children').value,
         'entry.1481193275': document.getElementById('field-dietary').value,
         'entry.870269992': document.getElementById('field-babychair').value || '0',
         'entry.1863328081': document.getElementById('field-blessing').value
