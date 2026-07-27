@@ -666,7 +666,7 @@
               </select>
             </div>
 
-            <div class="form-row attendance-row">
+            <div class="form-row attendance-row" id="attendanceFields" hidden>
               <div class="form-group">
                 <label class="form-label" for="field-adults">成人出席人數（含填表人）<br>NUMBER OF ADULTS</label>
                 <select class="form-select" id="field-adults" required>
@@ -691,7 +691,7 @@
               </div>
             </div>
 
-            <div class="form-row">
+            <div class="form-row" id="mealFields" hidden>
               <div class="form-group">
                 <label class="form-label" for="field-dietary">飲食需求 DIETARY</label>
                 <select class="form-select" id="field-dietary" required>
@@ -782,20 +782,56 @@
 
     const rsvpForm = document.getElementById('rsvpForm');
     const rsvpSuccess = document.getElementById('rsvpSuccess');
+    const attendanceOptions = document.querySelectorAll('input[name="attendance"]');
+    const attendanceFields = [
+      document.getElementById('attendanceFields'),
+      document.getElementById('mealFields')
+    ];
+    const attendanceControlledInputs = [
+      document.getElementById('field-adults'),
+      document.getElementById('field-children'),
+      document.getElementById('field-dietary'),
+      document.getElementById('field-babychair')
+    ];
+
+    function syncAttendanceFields() {
+      const attendanceValue = document.querySelector('input[name="attendance"]:checked')?.value || '';
+      const isAttending = attendanceValue === '欣然出席';
+
+      attendanceFields.forEach(group => {
+        group.hidden = !isAttending;
+      });
+      attendanceControlledInputs.forEach(input => {
+        input.disabled = !isAttending;
+        input.required = isAttending;
+      });
+
+      if (!isAttending) {
+        document.getElementById('field-adults').value = '';
+        document.getElementById('field-children').value = '0';
+        document.getElementById('field-dietary').value = '';
+        document.getElementById('field-babychair').value = '0';
+      }
+    }
+
+    attendanceOptions.forEach(option => option.addEventListener('change', syncAttendanceFields));
+    syncAttendanceFields();
     rsvpForm.addEventListener('submit', event => {
       event.preventDefault();
       if (!rsvpForm.reportValidity()) return;
 
       const formURL = 'https://docs.google.com/forms/d/e/1FAIpQLSdZyTDv5fzWJXBHAZA_3LNBTyYzjoteymTqTZvTc5K9rjyljQ/formResponse';
+      const attendanceValue = document.querySelector('input[name="attendance"]:checked')?.value || '';
+      const isNotAttending = attendanceValue === '不克出席';
       const params = {
-        'entry.476589962': document.querySelector('input[name="attendance"]:checked')?.value || '',
+        'entry.476589962': attendanceValue,
         'entry.642686610': document.getElementById('field-name').value,
         'entry.1941456970': document.getElementById('field-email').value,
         'entry.607367128': document.getElementById('field-relation').value,
-        'entry.2111541231': document.getElementById('field-adults').value,
-        'entry.728279814': document.getElementById('field-children').value,
-        'entry.1481193275': document.getElementById('field-dietary').value,
-        'entry.870269992': document.getElementById('field-babychair').value || '0',
+        'entry.2111541231': isNotAttending ? '0' : document.getElementById('field-adults').value,
+        'entry.728279814': isNotAttending ? '0' : document.getElementById('field-children').value,
+        'entry.1481193275': isNotAttending ? '0' : document.getElementById('field-dietary').value,
+        'entry.870269992': isNotAttending ? '0' : (document.getElementById('field-babychair').value || '0'),
         'entry.1863328081': document.getElementById('field-blessing').value
       };
 
@@ -822,6 +858,7 @@
 
     document.getElementById('resetButton').addEventListener('click', () => {
       rsvpForm.reset();
+      syncAttendanceFields();
       rsvpForm.classList.remove('hide');
       rsvpSuccess.classList.remove('show');
     });
